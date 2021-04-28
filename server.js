@@ -9,6 +9,7 @@ const signin = require("./controllers/signin");
 const profile = require("./controllers/profile");
 const image = require("./controllers/image");
 
+
 const db = knex({
   client: "pg",
   connection: {
@@ -41,10 +42,12 @@ app.post("/register", (req, res) => {
 app.get("/profile/:id", (req, res) => {
   profile.handleProfileGet(req, res, db);
 });
-
 // /image --> PUT --> user
 app.put("/image", (req, res) => {image.handleImageCount(req, res, db)});
 
+app.post("/imageURL",(req,res)=>{
+  image.handleApiCall(req,res)
+})
 app.listen(3000, () => {
   console.log("app is running on port 3000");
 });
