@@ -28,6 +28,7 @@ app.use(cors());
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
+app.get('/',(req,res)=> {res.send('it is working!')})
 // /signin --> POST = success/fail
 app.post("/signin", (req, res) => {
   signin.handleSignIn(req, res, db, bcrypt);
